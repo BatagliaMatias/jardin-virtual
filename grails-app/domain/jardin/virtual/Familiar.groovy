@@ -6,9 +6,10 @@ class Familiar {
     int dni
     String mail
     Set<Vinculo> vinculos
+    Set<SolicitudVinculoFamiliar> solicitudes
     String telegramId
 
-    static hasMany = [vinculos: Vinculo]
+    static hasMany = [vinculos: Vinculo, solicitudes: SolicitudVinculoFamiliar]
 
 
     static constraints = {

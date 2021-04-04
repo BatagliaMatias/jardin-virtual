@@ -1,6 +1,6 @@
 package jardin.virtual
 
-enum Estado{ACEPTADA,PENDIENTE,RECHAZADA}
+
 
 class Inscripcion {
     Nino nino

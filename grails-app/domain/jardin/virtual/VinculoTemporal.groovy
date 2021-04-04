@@ -1,8 +1,10 @@
 package jardin.virtual
 
+import java.time.ZonedDateTime
+
 class VinculoTemporal extends Vinculo{
-    Date desde
-    Date hasta
+    ZonedDateTime desde
+    ZonedDateTime hasta
     static constraints = {
         desde nullable: false
         hasta nullable: false

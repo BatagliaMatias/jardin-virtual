@@ -2,12 +2,13 @@ package jardin.virtual
 
 import groovy.transform.EqualsAndHashCode
 
-@EqualsAndHashCode(excludes = 'ninos,vinculos')
+@EqualsAndHashCode(excludes = 'ninos,vinculos,solicitudes')
 class Familia {
     String nombre
     Set<Vinculo> vinculos
     Set<Nino> ninos
-    static hasMany = [vinculos:Vinculo,ninos:Nino]
+    Set<SolicitudVinculoFamiliar> solicitudes
+    static hasMany = [vinculos:Vinculo,ninos:Nino,solicitudes:SolicitudVinculoFamiliar]
 
     static constraints = {
     }

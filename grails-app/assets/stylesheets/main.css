@@ -8,6 +8,31 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.1;
 }
 
+.botonSolicitar{
+    padding: 0px 4px !important;
+    border: 0px solid transparent !important;
+    float: right !important;
+}
+
+a.botonSolicitar.btn.btn-primary.disabled:before{
+    content: "Solicitud enviada";
+}
+
+a.botonSolicitar.btn.btn-primary:before{
+    content: "Solicitar unirse";
+}
+
+.derecha{
+    float: right !important;
+}
+
+.botonTiempo {
+    padding: 0px 4px !important;
+    border: 0px solid transparent !important;
+    float: right !important;
+    margin-left: 5px;
+}
+
 /* BASE LAYOUT */
 
 html {
