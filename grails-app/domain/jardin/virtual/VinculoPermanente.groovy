@@ -1,6 +1,6 @@
 package jardin.virtual
 
-class Permanente extends Vinculo{
+class VinculoPermanente extends Vinculo{
 
     static constraints = {
     }

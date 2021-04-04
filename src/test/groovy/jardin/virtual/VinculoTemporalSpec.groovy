@@ -3,7 +3,7 @@ package jardin.virtual
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class PermanenteSpec extends Specification implements DomainUnitTest<Permanente> {
+class VinculoTemporalSpec extends Specification implements DomainUnitTest<VinculoTemporal> {
 
     def setup() {
     }

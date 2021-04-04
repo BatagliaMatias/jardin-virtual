@@ -8,6 +8,7 @@ buildscript {
         classpath "gradle.plugin.com.github.erdi.webdriver-binaries:webdriver-binaries-gradle-plugin:2.0"
         classpath "org.grails.plugins:hibernate5:7.0.4"
     }
+
 }
 
 version "0.1"
@@ -33,6 +34,7 @@ configurations {
 }
 
 dependencies {
+    compile "org.telegram:telegrambots:5.1.1"
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
@@ -72,6 +74,7 @@ dependencies {
     testCompile "org.seleniumhq.selenium:selenium-support:3.14.0"
     testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:3.14.0"
     testRuntime "org.seleniumhq.selenium:selenium-firefox-driver:3.14.0"
+
 }
 
 bootRun {
@@ -109,3 +112,8 @@ tasks.withType(Test) {
     systemProperty "webdriver.chrome.driver", System.getProperty('webdriver.chrome.driver')
     systemProperty "webdriver.gecko.driver", System.getProperty('webdriver.gecko.driver')
 }
+
+grails { pathingJar = true }
+
+
+

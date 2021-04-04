@@ -1,5 +1,8 @@
 package jardin.virtual
 
+import groovy.transform.ToString
+
+
 class Nino {
     String nombre
     String apellido
@@ -15,4 +18,9 @@ class Nino {
         apellido nullable: false, blank: false
         cuaderno nullable: true //sino no puedo usar el scaffolding para crear
     }                           //No puedo crear cuaderno sin nino y nino sin cuaderno
+
+    @Override
+    String toString(){
+        nombre + " " + apellido
+    }
 }

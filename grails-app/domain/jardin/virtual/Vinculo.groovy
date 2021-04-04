@@ -1,6 +1,6 @@
 package jardin.virtual
 
-class Vinculo {
+abstract class Vinculo {
     String descripcion
     Familiar familiar
     Familia familia
@@ -9,5 +9,10 @@ class Vinculo {
 
     static constraints = {
         descripcion nullable: false
+    }
+
+    @Override
+    String toString(){
+         descripcion + " " + familia
     }
 }
