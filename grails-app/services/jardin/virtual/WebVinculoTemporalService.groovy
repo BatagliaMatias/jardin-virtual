@@ -7,6 +7,7 @@ class WebVinculoTemporalService {
     NotificacionService notificacionService
 
     def extender(Familiar solicitante, long id, long dias) {
+        //Deberia ser VinculoTemporal para asegurar que no llegue otro.. por más que la vista no lo permita
         def vinculo = Vinculo.get(id)
         boolean vinculoSolicitanteEsPermanente = solicitante.getVinculosPermanentes().any({it.familia == vinculo.familia})
 

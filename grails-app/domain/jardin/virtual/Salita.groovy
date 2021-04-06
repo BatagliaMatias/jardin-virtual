@@ -3,7 +3,8 @@ package jardin.virtual
 class Salita {
     int edadMinima
     int edadMaxima
-    int cupo
+    int cupoMaximo
+    String nombre
     Set<Inscripcion> inscripciones
     Set<MaestroSalita> maestroSalitas
     Set<Actividad> actividades
@@ -15,4 +16,9 @@ class Salita {
     static constraints = {
 
     }
+
+    int cupo(){
+        cupoMaximo - inscripciones.size()
+    }
+
 }

@@ -13,16 +13,11 @@ class WebFamiliaController {
     VinculoTemporalService vinculoTemporalService
     SolicitudVinculoFamiliarService solicitudVinculoFamiliarService
     NotificacionService notificacionService
+    WebFamiliarService webFamiliarService
 
     def index() {
-        if(session.user == null){
-            return redirect (uri:"/login")
-        }
-        if(!session.user.isAttached()){
-            session.user.attach();
-        }
+        def familiar = webFamiliarService.validarSesionFamiliar(session)
 
-        def familiar = session.user
         def misVinculos = familiar.vinculos
         def misFamilias = misVinculos.collect {it.familia}
         def otrasFamilias = familiaService.list().findAll {misFamilias.indexOf(it) == -1}
@@ -34,14 +29,7 @@ class WebFamiliaController {
     }
 
     def familia(long idFamilia){
-        if(session.user == null){
-            return redirect (uri:"/login")
-        }
-        if(!session.user.isAttached()){
-            session.user.attach();
-        }
-
-        def familiar = session.user
+        def familiar = webFamiliarService.validarSesionFamiliar(session)
 
         def miFamilia = familiaService.get(idFamilia)
         miFamilia.attach()
@@ -62,14 +50,8 @@ class WebFamiliaController {
     }
 
     def crearFamilia(String nombre, String vinculo){
-        if(session.user == null){
-            return redirect (uri:"/login")
-        }
-        if(!session.user.isAttached()){
-            session.user.attach()
-        }
+        def familiar = webFamiliarService.validarSesionFamiliar(session)
 
-        def familiar = session.user
         def familia = new Familia(nombre: nombre)
         familiaService.save(familia)
         def vinculoPermanente = new VinculoPermanente(descripcion: vinculo, familia: familia, familiar: familiar)
@@ -80,14 +62,8 @@ class WebFamiliaController {
     }
 
     def solicitarFamilia(long id, String vinculoSolicitud){
-        if(session.user == null){
-            return redirect (uri:"/login")
-        }
-        if(!session.user.isAttached()){
-            session.user.attach()
-        }
+        def familiar = webFamiliarService.validarSesionFamiliar(session)
 
-        def familiar = session.user
         def familia = familiaService.get(id)
         def solicitud = new SolicitudVinculoFamiliar(familiar: familiar, familia: familia, fecha: new Date(),estado: Estado.PENDIENTE,vinculo:vinculoSolicitud)
         solicitudVinculoFamiliarService.save(solicitud)
@@ -101,12 +77,7 @@ class WebFamiliaController {
     }
 
     def aceptarSolicitudPermanente(long idSolicitud){
-        if(session.user == null){
-            return redirect (uri:"/login")
-        }
-        if(!session.user.isAttached()){
-            session.user.attach()
-        }
+        webFamiliarService.validarSesionFamiliar(session)
 
         def solicitud = solicitudVinculoFamiliarService.get(idSolicitud)
         solicitud.estado = Estado.ACEPTADA
@@ -122,12 +93,7 @@ class WebFamiliaController {
     }
 
     def aceptarSolicitudTemporal(long idSolicitud, long dias){
-        if(session.user == null){
-            return redirect (uri:"/login")
-        }
-        if(!session.user.isAttached()){
-            session.user.attach()
-        }
+        webFamiliarService.validarSesionFamiliar(session)
 
         def solicitud = solicitudVinculoFamiliarService.get(idSolicitud)
         solicitud.estado = Estado.ACEPTADA
@@ -146,12 +112,7 @@ class WebFamiliaController {
     }
 
     def rechazarSolicitud(long idSolicitud){
-        if(session.user == null){
-            return redirect (uri:"/login")
-        }
-        if(!session.user.isAttached()){
-            session.user.attach()
-        }
+        webFamiliarService.validarSesionFamiliar(session)
 
         def solicitud = solicitudVinculoFamiliarService.get(idSolicitud)
         solicitud.estado = Estado.RECHAZADA

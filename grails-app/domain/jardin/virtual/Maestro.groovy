@@ -12,5 +12,19 @@ class Maestro {
     static constraints = {
         nombre nullable: false, blank: false
         apellido nullable: false, blank: false
+        maestroSalitas nullable: true
+        entradasCuaderno nullable: true
+    }
+
+    @Override
+    String toString(){
+        nombre + " " + apellido
+    }
+
+    def getMisSalitas() {
+        if(maestroSalitas != null)
+            maestroSalitas.collect {it.salita}
+        else
+            []
     }
 }

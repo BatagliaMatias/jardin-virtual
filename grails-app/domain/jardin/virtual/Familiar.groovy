@@ -27,6 +27,9 @@ class Familiar {
         VinculoTemporal.findAllWhere(familiar:this)
     }
 
+    def esPermanenteDeNino(Nino nino){
+        getVinculosPermanentes().any{it.familia == nino.familia}
+    }
 
     @Override
     String toString() {

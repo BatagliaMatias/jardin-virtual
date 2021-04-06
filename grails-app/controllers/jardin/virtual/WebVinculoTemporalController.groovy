@@ -9,6 +9,7 @@ import javax.transaction.Transactional
 
 class WebVinculoTemporalController {
     WebVinculoTemporalService webVinculoTemporalService
+    WebFamiliarService webFamiliarService
 
     def index() { }
     /**Asi se tienen que hacer los metodos de un controller
@@ -16,14 +17,9 @@ class WebVinculoTemporalController {
      * El controller no maneja negocio
     */
     def extender(long id, long dias){
-        if(session.user == null){
-            return redirect (uri:"/login")
-        }
-        if(!session.user.isAttached()){
-            session.user.attach();
-        }
+        def familiar = webFamiliarService.validarSesionFamiliar(session)
 
-        webVinculoTemporalService.extender(session.user,id,dias)
+        webVinculoTemporalService.extender(familiar,id,dias)
 
         def vinculo = Vinculo.get(id)
         redirect (uri:"/webFamilia/familia?idFamilia="+vinculo.familia.id)
