@@ -1,10 +1,12 @@
 package jardin.virtual
 
+import javax.transaction.Transactional
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
+@Transactional
 class WebFamiliaController {
     FamiliaService familiaService
     VinculoPermanenteService vinculoPermanenteService
@@ -44,10 +46,19 @@ class WebFamiliaController {
         def miFamilia = familiaService.get(idFamilia)
         miFamilia.attach()
 
-        def vinculos = miFamilia.vinculos
+        def vinculosTemporales = miFamilia.getVinculosTemporales()
+        def vinculosPermanentes = miFamilia.getVinculosPermanentes()
+        def soyPermanente = vinculosPermanentes.any{it.familiar == familiar}
+
         def solicitudes = miFamilia.solicitudes.findAll {it.estado == Estado.PENDIENTE}
         def ninos = miFamilia.ninos
-        respond model:[miFamilia: miFamilia, vinculos: vinculos, ninos: ninos, solicitudes:solicitudes]
+        respond model:[miFamilia: miFamilia,
+                       ninos: ninos,
+                       solicitudes:solicitudes,
+                       vinculosPermanentes: vinculosPermanentes,
+                       vinculosTemporales: vinculosTemporales,
+                       soyPermanente:soyPermanente
+        ]
     }
 
     def crearFamilia(String nombre, String vinculo){

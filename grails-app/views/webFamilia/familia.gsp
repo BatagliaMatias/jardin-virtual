@@ -7,16 +7,38 @@
 <body>
 <div class="row">
     <div class="col-xs-12">
-        <h1>${model.miFamilia}</h1>
+        <h1>${model.miFamilia} </h1>
     </div>
 </div>
 
 <div class="row">
+
     <div class="col-sm-6">
-        <h2>Familiares</h2>
+        <h2>Familiares Permanentes</h2>
         <ul class="list-group">
-            <g:each in="${model.vinculos}">
+            <g:each in="${model.vinculosPermanentes}">
                 <li class="list-group-item">${it.descripcion} ${it.familiar}</li>
+            </g:each>
+        </ul>
+    </div>
+
+    <div class="col-sm-6">
+        <h2>Familiares Temporales</h2>
+        <ul class="list-group">
+            <g:each in="${model.vinculosTemporales}">
+                <li class="list-group-item">${it.descripcion} ${it.familiar}
+                    <g:if test="${model.soyPermanente}">
+                        <a href="/webVinculoTemporal/extender?id=${it.id}&dias=30" class="botonTiempo btn btn-warning">+1 mes</a>
+                        <a href="/webVinculoTemporal/extender?id=${it.id}&dias=7" class="botonTiempo btn btn-warning">+1 semana</a>
+                        <a href="/webVinculoTemporal/extender?id=${it.id}&dias=1" class="botonTiempo btn btn-warning">+1 día</a>
+                    </g:if>
+                    <g:if test="${it.esActivo()}">
+                        <a href="" class="botonTiempo btn  btn-success">${it.mostrarHasta()}</a>
+                    </g:if>
+                    <g:else>
+                        <a href="" class="botonTiempo btn  btn-danger">${it.mostrarHasta()}</a>
+                    </g:else>
+                </li>
             </g:each>
         </ul>
     </div>
@@ -25,7 +47,7 @@
         <h2>Niños</h2>
         <ul class="list-group">
             <g:each in="${model.ninos}">
-                <li class="list-group-item"><a href="/webFamilia?id=${it.id}">${it}</a></li>
+                <li class="list-group-item"><a href="/webNino/nino?id=${it.id}">${it}</a></li>
             </g:each>
         </ul>
     </div>

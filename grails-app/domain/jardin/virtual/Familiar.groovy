@@ -19,6 +19,15 @@ class Familiar {
         dni nullable:false
     }
 
+    def getVinculosPermanentes(){
+        VinculoPermanente.findAllWhere(familiar:this)
+    }
+
+    def getVinculosTemporales(){
+        VinculoTemporal.findAllWhere(familiar:this)
+    }
+
+
     @Override
     String toString() {
         nombre + " " + apellido

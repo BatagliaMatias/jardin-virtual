@@ -17,4 +17,12 @@ class Familia {
     String toString() {
         nombre + " #" + id
     }
+
+    def getVinculosPermanentes(){
+        VinculoPermanente.findAllWhere(familia:this)
+    }
+
+    def getVinculosTemporales(){
+        VinculoTemporal.findAllWhere(familia:this)
+    }
 }
