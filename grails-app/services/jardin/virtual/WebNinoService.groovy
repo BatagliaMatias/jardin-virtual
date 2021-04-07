@@ -20,9 +20,9 @@ class WebNinoService {
             model.salitas = criteria.list{
                 le("edadMinima",nino.edad)
                 ge('edadMaxima',nino.edad)
-                gt('cupo',0)
-                order("cupo","desc")
+                order('nombre',"asc")
             }
+            model.salitas = model.salitas.findAll {it.cupo() > 0}
         }
 
         return model

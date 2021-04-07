@@ -13,7 +13,7 @@
             <ul class="list-group">
                 <g:each in="${salitas}">
                     <li class="list-group-item">
-                        <a href="/webSalita/salita?idSalita=${it.id}">${it.nombre} De ${it.edadMinima} a ${it.edadMaxima} con cupo ${it.cupo()}</a>
+                        <a href="/webSalita/salita?id=${it.id}">${it.nombre} De ${it.edadMinima} a ${it.edadMaxima} con cupo ${it.cupo()}</a>
                     </li>
                 </g:each>
             </ul>
