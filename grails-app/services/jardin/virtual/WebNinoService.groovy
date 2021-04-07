@@ -15,6 +15,7 @@ class WebNinoService {
         if(estaInscripto){
             model.salita = nino.inscripcion.salita
             model.estaEsperandoAceptacion = nino.inscripcion.estado == Estado.PENDIENTE
+            model.actividadesAbiertas = nino.inscripcion.salita.actividades.findAll{it.tipo == Tipo.ABIERTA}
         } else {
             def criteria = Salita.createCriteria()
             model.salitas = criteria.list{

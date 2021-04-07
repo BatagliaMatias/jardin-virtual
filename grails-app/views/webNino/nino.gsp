@@ -15,7 +15,18 @@
         <h4>Su inscripción esta pendiente a que un maestro la apruebe</h4>
       </g:if>
       <g:else>
-        mostrar contenido de la sala
+        <g:if test="${!actividadesAbiertas.isEmpty()}">
+          <h2>Actividades abiertas</h2>
+          <div class="col-xs-12">
+            <ul class="list-group">
+              <g:each in="${actividadesAbiertas}">
+                <li class="list-group-item">
+                  <a href="/webActividad/actividad?id=${it.id}">${it.consigna}</a>
+                </li>
+              </g:each>
+            </ul>
+          </div>
+        </g:if>
       </g:else>
     </g:if>
     <g:else>

@@ -10,6 +10,7 @@ class Actividad {
     String consigna
     Salita salita
 
+
     static belongsTo = [salita:Salita]
 
     static constraints = {

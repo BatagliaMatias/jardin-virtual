@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main" />
 </head>
+
 <body>
-<asset:image src="virtual2.png" style="width: auto"/>
+
 </body>
 </html>

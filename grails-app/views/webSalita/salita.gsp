@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main" />
+    <!--https://github.com/dmitriy-drenkalyuk/dynamic-blocks-taglib-->
 </head>
 
 <body>
@@ -48,16 +49,28 @@
             </div>
         </g:if>
         <div class="col-xs-12">
-            <h1>Crear nueva actividades</h1>
-            <g:form name="actividad" url="[action:'list',controller:'actividad']">
-                <label for="consigna">Consigna:</label>
-                <g:textArea name="consigna"  rows="5" cols="40"/>
+            <h1>Crear nueva actividad</h1>
+
+            <g:form method="post" name="actividad" url="/webActividad/crear">
                 <label for="inicio">Inicio:</label>
-                <g:datePicker name="inicio" value="${new Date()}"
-                              precision="day" />
+                <input type="datetime-local" name="inicio" id="inicio">
                 <label for="fin">Fin:</label>
-                <g:datePicker name="fin" value="${new Date()}"
-                              precision="day" />
+                <input type="datetime-local" name="fin" id="fin">
+                <br>
+                <label style="margin-top: 10px" for="consigna">Consigna:</label>
+                <g:textArea name="consigna"  rows="3" style="width:100%;margin-bottom: 10px"/>
+                <br>
+                <label for="fotos">Fotos (una uri por linea)</label>
+                <g:textArea name="fotos"  rows="3" style="width:100%;margin-bottom: 10px"/>
+                <br>
+                <label for="videos">Videos (una uri por linea)</label>
+                <g:textArea name="videos"  rows="3" style="width:100%;margin-bottom: 10px"/>
+                <br>
+                <label for="descargables">Descargables (una uri por linea)</label>
+                <g:textArea name="descargables"  rows="3" style="width:100%;margin-bottom: 10px"/>
+                <br>
+                <g:hiddenField name="salita" value="${salita.id}"/>
+                <g:actionSubmit action="crear" value="Crear actividad"/>
             </g:form>
         </div>
 
