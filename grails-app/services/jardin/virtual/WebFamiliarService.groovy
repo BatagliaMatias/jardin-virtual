@@ -15,6 +15,18 @@ class WebFamiliarService {
         }
 
         return session.user
+    }
 
+    List getFamiliar(Familiar familiar) {
+        def misVinculos = familiar.vinculos
+        def misFamilias = misVinculos.collect { it.familia }
+        //ver de resolver con criteria para sacarle más provecho a Hibernate
+        //Puede volverse cuello de botella
+        def otrasFamilias = Familia.list().findAll { misFamilias.indexOf(it) == -1 }
+        def misSolicitudes = familiar.solicitudes
+        def misFamiliasSolicitadas = misSolicitudes.collect { it.familia }
+        if (!misFamiliasSolicitadas)
+            misFamiliasSolicitadas = []
+        [misFamiliasSolicitadas, misVinculos, otrasFamilias, misSolicitudes]
     }
 }

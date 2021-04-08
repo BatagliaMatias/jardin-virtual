@@ -21,6 +21,7 @@ class WebActividadService {
         Salita salita = Salita.get(params.salita)
 
         if(params.inicio > params.fin){
+            //Crear excepcion de negocio propia
             throw new IllegalArgumentException("Fecha inicio no puede ser posterior al fin")
         }
 

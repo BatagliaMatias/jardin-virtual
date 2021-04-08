@@ -42,8 +42,9 @@
             </g:each>
         </ul>
     </div>
-
-    <div class="col-sm-6">
+</div>
+<div class="row">
+    <div class="col-sm-12">
         <h2>Niños</h2>
         <ul class="list-group">
             <g:each in="${model.ninos}">

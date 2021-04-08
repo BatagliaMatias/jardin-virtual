@@ -5,8 +5,8 @@
 </head>
 
 <body>
-<div class="col-xs-6">
-    <div class="col-xs-12">
+<div class="row">
+    <div class="col-xs-6">
         <h1>Mis Familias</h1>
 
         <ul class="list-group">
@@ -15,7 +15,7 @@
             </g:each>
         </ul>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-6">
         <h2>Nueva familia</h2>
         <form class="form-horizontal" action="/webFamilia/crearFamilia" method="post">
             <div class="form-group">
@@ -33,11 +33,10 @@
             <button type="submit" class="btn btn-default" >Crear</button>
         </form>
     </div>
-
 </div>
 
-<div class="col-xs-6">
-    <div class="col-xs-12">
+<div class="row">
+    <div class="col-xs-6">
         <h1>Otras Familias</h1>
 
         <ul class="list-group">
@@ -46,8 +45,8 @@
             </g:each>
         </ul>
     </div>
-    <div class="col-xs-12">
-        <h2>Mis solicitudes</h2>
+    <div class="col-xs-6">
+        <h1>Mis solicitudes</h1>
         <ul class="list-group">
             <g:each in="${model.misSolicitudes}">
                 <li class="list-group-item">${it.familia.nombre} - ${it.estado} - ${it.fecha} </li>

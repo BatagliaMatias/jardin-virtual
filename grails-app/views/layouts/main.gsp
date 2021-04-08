@@ -34,9 +34,12 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/login/">Login</a></li>
-                <li><a href="/webFamilia/">Familias</a></li>
-                <li><a href="#contact">Contact</a></li>
-
+                <g:if test="${session.user != null && session.user instanceof jardin.virtual.Familiar}">
+                    <li><a href="/webFamilia/">Familias</a></li>
+                </g:if>
+                <g:if test="${session.user != null && session.user instanceof jardin.virtual.Maestro}">
+                    <li><a href="/webMaestro/maestro/">Salitas</a></li>
+                </g:if>
             </ul>
 
 
@@ -51,7 +54,7 @@
 </div><!-- /.container -->
 <div class="footer row" role="contentinfo">
     <div class="col-xs-12">
-       FOOTER
+        <span class="center-block text-center">Matías Bataglia 95354 matubat91@gmail.com - 75.71 Seminario de Ing. en Informática I - TP Jardin Virtual</span>
     </div>
 </div>
 
