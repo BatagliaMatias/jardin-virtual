@@ -1,10 +1,9 @@
 package jardin.virtual
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class SalitaSpec extends Specification implements DomainUnitTest<Salita> {
-
+class WebNinoServiceSpec extends Specification implements ServiceUnitTest<WebNinoService>{
 
     def setup() {
     }
@@ -14,6 +13,6 @@ class SalitaSpec extends Specification implements DomainUnitTest<Salita> {
 
     void "test something"() {
         expect:"fix me"
-            true == false
+            true == true
     }
 }

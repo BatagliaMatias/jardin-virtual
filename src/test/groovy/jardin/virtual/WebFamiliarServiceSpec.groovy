@@ -1,10 +1,9 @@
 package jardin.virtual
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class SalitaSpec extends Specification implements DomainUnitTest<Salita> {
-
+class WebFamiliarServiceSpec extends Specification implements ServiceUnitTest<WebFamiliarService>{
 
     def setup() {
     }
